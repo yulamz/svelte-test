@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="../svelte-app/dist/bundle.js"></script>
+  <script>
+    console.log("Vue", Vue)
+    const { IconLink } = window['svelte-ui']
+    const MyComponent = {
+      template: `<div id="test"></div>`,
+      setup() {
+        Vue.onBeforeMount(() => {
+          console.log('before mount in the composition api!')
+        })
+        Vue.onMounted(() => {
+          console.log('mounted in the composition api!')
+          new IconLink({
+            target: document.getElementById('test'),
+            props: {
+              icon: '🚀',
+              link: 'https://qinzhen001.github.io/2020/10/24/package%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3-myblog/#exports'
+            }
+          })
+        })
+      }
+    }
+
+    const app = Vue.createApp({
+      template: `<div> 
+        {{ hi }}  
+        <my-component></my-component>   
+      </div>`,
+      setup() {
+        const hi = Vue.ref('hi')
+        return {
+          hi
+        }
+      }
+    })
+    app.component('my-component', MyComponent);
+    app.mount('#root')
+
+  </script>
+
+
+</body>
+
+</html>
