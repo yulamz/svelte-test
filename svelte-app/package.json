@@ -1,8 +1,14 @@
 {
   "name": "svelte-app",
-  "version": "1.0.0",
+  "version": "1.0.10",
   "private": true,
   "type": "module",
+  "main": "dist/bundle.js",
+  "module": "dist/bundle.esm.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
@@ -20,6 +26,5 @@
     "sirv-cli": "^2.0.0"
   },
   "dependencies": {
-  
   }
 }

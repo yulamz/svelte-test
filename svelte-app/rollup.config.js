@@ -30,13 +30,18 @@ function serve() {
 }
 
 export default {
-	input: 'src/main.js',
-	output: {
-		// sourcemap: true,
-		format: 'umd',
-		name: 'app',
-		file: 'dist/bundle.js'
-	},
+	input: 'src/lib/index.js',
+	output: [
+		{
+			format: 'umd',
+			name: 'svelte-ui',
+			file: 'dist/bundle.js'
+		},
+		{
+			file: 'dist/bundle.esm.js',
+			format: 'es',
+		},
+	],
 	plugins: [
 		svelte({
 			compilerOptions: {
