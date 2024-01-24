@@ -32,10 +32,10 @@ function serve() {
 export default {
 	input: 'src/main.js',
 	output: {
-		sourcemap: true,
-		format: 'iife',
+		// sourcemap: true,
+		format: 'umd',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		file: 'dist/bundle.js'
 	},
 	plugins: [
 		svelte({
